@@ -27,6 +27,9 @@ app.add_middleware(
 )
 
 
+app.include_router(webhook.router, prefix="/api/v1", tags=["webhook"])
+
+
 @app.get("/")
 async def root():
     return {
