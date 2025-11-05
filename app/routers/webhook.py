@@ -39,11 +39,6 @@ async def receive_weather_data(data: DataReceived, db: Session = Depends(get_db)
             compass_rose=data.compassRose,
             real_eto=data.realETO,
             radiation_uv=data.radiationUV,
-            active_sensor=data.activeSensor,
-            solar_panel=data.solarPanel,
-            open_door=data.openDoor,
-            low_battery=data.lowBattery,
-            observations=data.observations,
         )
 
         db.add(db_data)

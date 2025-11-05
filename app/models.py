@@ -29,14 +29,6 @@ class WeatherStationData(Base):
     compass_rose = Column(String(10), nullable=True)
     real_eto = Column(Float, nullable=True)
     radiation_uv = Column(Float, nullable=True)
-
-    active_sensor = Column(Integer, nullable=True)
-    solar_panel = Column(Integer, nullable=True)
-    open_door = Column(Integer, nullable=True)
-    low_battery = Column(Integer, nullable=True)
-
-    observations = Column(String(500), nullable=True)
-
     processed = Column(Integer, default=0, nullable=False)
     created_at = Column(
         DateTime(timezone=True), server_default=func.now(), nullable=False
@@ -65,11 +57,6 @@ class DataReceived(BaseModel):
     compassRose: Optional[str] = None
     realETO: Optional[float] = None
     radiationUV: Optional[float] = None
-    activeSensor: Optional[int] = None
-    solarPanel: Optional[int] = None
-    openDoor: Optional[int] = None
-    lowBattery: Optional[int] = None
-    observations: Optional[str] = None
     source: str
 
     class Config:
@@ -88,11 +75,6 @@ class DataReceived(BaseModel):
                 "compassRose": "S",
                 "realETO": 0.21,
                 "radiationUV": 5.0,
-                "activeSensor": 1,
-                "solarPanel": 1,
-                "openDoor": 0,
-                "lowBattery": 0,
-                "observations": "Clear sky",
                 "source": "sensor_001",
             }
         }
@@ -128,11 +110,6 @@ class WeatherDataOut(BaseModel):
     compass_rose: Optional[str] = None
     real_eto: Optional[float] = None
     radiation_uv: Optional[float] = None
-    active_sensor: Optional[int] = None
-    solar_panel: Optional[int] = None
-    open_door: Optional[int] = None
-    low_battery: Optional[int] = None
-    observations: Optional[str] = None
     processed: int
     created_at: datetime
 
